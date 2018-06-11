@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/icon-180.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/icon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/icon-16.png" />
+  <link rel="manifest" href="/assets/manifest.json" />
+  <meta name="application-name" content="Lava Cubes" />
+  <meta name="theme-color" content="#111111">
+  <title>Lava Cubes</title>
+  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #111;
+      text-align: center;
+      font-family: 'VT323', monospace;
+      font-size: 20px;
+      color: #ccc;
+    }
+
+    .game-title {
+      font-size: 45px;
+      text-transform: uppercase;
+      margin: 0 0 10px;
+      padding: 0;
+      color: #111;
+      text-shadow: 0px 0px 20px #FF4136;
+    }
+
+    .game-container {
+      position: relative;
+      width: 304px;
+      height: 304px;
+      margin: 0 auto;
+    }
+
+    .canvas-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding-top: 130px;
+      text-align: center;
+      text-transform: uppercase;
+      background-color: rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      transition: opacity 200ms;
+      font-size: 35px;
+    }
+
+    .canvas-overlay__text {
+      font-size: 1rem;
+      text-transform: none;
+    }
+
+    .canvas-overlay--show {
+      opacity: 1;
+    }
+
+    .blink {
+      animation: blinker 1s normal infinite;
+    }
+
+    @keyframes blinker {
+      0%,
+      50% {
+        opacity: 0;
+      }
+      51%,
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .game-over__restart {
+      font-size: 1rem;
+      text-transform: none;
+    }
+
+    #game-canvas {
+      display: block;
+      margin: 0 auto;
+      border: 2px solid #333;
+      width: 304px;
+      height: 304px;
+    }
+
+    .score-board {
+      width: 300px;
+      display: flex;
+      justify-content: space-between;
+      margin: 0 auto;
+    }
+
+    .control {
+      position: relative;
+      width: 250px;
+      margin: 20px auto 0 auto;
+    }
+
+    .control__button {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #cccccc;
+      border-radius: 10px;
+      color: #666;
+      font-size: 16px;
+    }
+
+    .control__button--horizontal {
+      width: 50px;
+      height: 100px;
+    }
+
+    .control__button--vertical {
+      width: 100px;
+      height: 50px;
+    }
+
+    .control__button__up {
+      top: 0;
+      left: 75px;
+    }
+
+    .control__button__up span {
+      transform: rotate(90deg);
+    }
+
+    .control__button__left {
+      top: 25px;
+      left: 0;
+    }
+
+    .control__button__right {
+      top: 25px;
+      right: 0;
+    }
+
+    .control__button__down {
+      top: 100px;
+      left: 75px;
+    }
+
+    .control__button__down span {
+      transform: rotate(-90deg);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="score-board">
+    <div id="level">Level 1</div>
+    <div id="score">0</div>
+  </div>
+  <div class="game-container">
+    <canvas id="game-canvas"></canvas>
+    <div class="canvas-overlay game-over">
+      Game over
+      <div class="blink game-over__restart">Tap to restart</div>
+    </div>
+    <div class="canvas-overlay canvas-overlay--show start-game">
+      <h1 class="game-title">Lava Cubes</h1>
+      <div class="blink canvas-overlay__text">Tap to start</div>
+    </div>
+  </div>
+
+  <div class="control">
+    <div class="control__button control__button--vertical control__button__up">
+      <span>&#x3C;</span>
+    </div>
+    <div class="control__button control__button--horizontal control__button__left">
+      <span>&#x3C;</span>
+    </div>
+    <div class="control__button control__button--horizontal control__button__right">
+      <span>&#x3E;</span>
+    </div>
+    <div class="control__button control__button--vertical control__button__down">
+      <span>&#x3C;</span>
+    </div>
+  </div>
+<script src="main.js?8a67d37f6c81e52aa761"></script></body>
+
+</html>
